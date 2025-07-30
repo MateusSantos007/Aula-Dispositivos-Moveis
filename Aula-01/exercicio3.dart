@@ -1,20 +1,47 @@
 void main() {
-  var hoje = DateTime.now().day;
-  var inicio = DateTime(2025, 7, 1);
-
-  int diaMes = 1;
-  String semana = '';
-
-  print('|D |S| T| Q| Q| S| S|');
-
-  for (int i = 1; i <= 7; i++) {
-    if (i >= inicio.weekday) {
-      semana += '$i |';
-      diaMes++;
-    } else {
-      semana += ' |';
+  var diaAtual = DateTime.now();
+  var inicio = DateTime(2025,diaAtual.month,1);
+  
+  StringBuffer calendario =  StringBuffer('');
+  calendario.writeln('| D  | S  | T  | Q  | Q  | S  | S  |');
+  int semana = inicio.weekday;
+  int aux = 7;
+  
+  while(true){
+    if(aux == 7){
+      aux = 0;
+    }else{
+      aux++;
+    }
+    
+    calendario.write('|    ');
+    
+    if(aux  == semana - 1 ){
+      break;
     }
   }
-
-  print(semana);
+    
+  for(int dias = 1; dias <= diaAtual.day; dias++){
+    if(semana == 6){
+      if(dias < 10){
+        calendario.writeln('| $dias  |');
+      }else{
+        calendario.writeln('| $dias |');
+      }
+    }else{
+      if(dias < 10){
+        calendario.write('| $dias  ');
+      }else{
+        calendario.write('| $dias ');
+      }
+    }
+    
+    if(semana == 7){
+      semana = 1;
+    }else{
+      semana++; 
+    }
+  }
+  
+  print(calendario);
 }
