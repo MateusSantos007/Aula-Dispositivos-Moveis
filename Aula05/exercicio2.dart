@@ -16,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   var n2 = "";
   var bsum = false;
   var sum = 0;
-  var visor = 0;
+  var visor = "";
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  visor == 0
+                  visor == ""
                       ? Text(bsum != true ? n1 : n2)
                       : Text(visor.toString()),
                 ],
@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
                             } else {
                               n2 += "1";
                             }
-                            visor = 0;
+                            visor = "";
                             print("operador 1: ${n1}");
                             print("operador 2: ${n2}");
                             print("soma apertado: ${bsum.toString()}");
@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
                             } else {
                               n2 += "2";
                             }
-                            visor = 0;
+                            visor = "";
                             print("operador 1: ${n1}");
                             print("operador 2: ${n2}");
                             print("soma apertado: ${bsum.toString()}");
@@ -94,7 +94,7 @@ class _MyAppState extends State<MyApp> {
                             } else {
                               n2 += "2";
                             }
-                            visor = 0;
+                            visor = "";
                             print("operador 1: ${n1}");
                             print("operador 2: ${n2}");
                             print("soma apertado: ${bsum.toString()}");
@@ -121,7 +121,7 @@ class _MyAppState extends State<MyApp> {
                             } else {
                               n2 += "4";
                             }
-                            visor = 0;
+                            visor = "";
                             print("operador 1: ${n1}");
                             print("operador 2: ${n2}");
                             print("soma apertado: ${bsum.toString()}");
@@ -143,7 +143,7 @@ class _MyAppState extends State<MyApp> {
                             } else {
                               n2 += "5";
                             }
-                            visor = 0;
+                            visor = "";
                             print("operador 1: ${n1}");
                             print("operador 2: ${n2}");
                             print("soma apertado: ${bsum.toString()}");
@@ -165,7 +165,7 @@ class _MyAppState extends State<MyApp> {
                             } else {
                               n2 += "6";
                             }
-                            visor = 0;
+                            visor = "";
                             print("operador 1: ${n1}");
                             print("operador 2: ${n2}");
                             print("soma apertado: ${bsum.toString()}");
@@ -192,7 +192,7 @@ class _MyAppState extends State<MyApp> {
                             } else {
                               n2 += "7";
                             }
-                            visor = 0;
+                            visor = "";
                             print("operador 1: ${n1}");
                             print("operador 2: ${n2}");
                             print("soma apertado: ${bsum.toString()}");
@@ -214,7 +214,7 @@ class _MyAppState extends State<MyApp> {
                             } else {
                               n2 += "8";
                             }
-                            visor = 0;
+                            visor = "";
                             print("operador 1: ${n1}");
                             print("operador 2: ${n2}");
                             print("soma apertado: ${bsum.toString()}");
@@ -236,7 +236,7 @@ class _MyAppState extends State<MyApp> {
                             } else {
                               n2 += "8";
                             }
-                            visor = 0;
+                            visor = "";
                             print("operador 1: ${n1}");
                             print("operador 2: ${n2}");
                             print("soma apertado: ${bsum.toString()}");
@@ -263,7 +263,7 @@ class _MyAppState extends State<MyApp> {
                             } else {
                               n2 += "0";
                             }
-                            visor = 0;
+                            visor = "";
                             print("operador 1: ${n1}");
                             print("operador 2: ${n2}");
                             print("soma apertado: ${bsum.toString()}");
@@ -287,8 +287,7 @@ class _MyAppState extends State<MyApp> {
                             print(
                               "resultado: ${sum + int.parse(n1) + int.parse(n2)}",
                             );
-                            visor = sum;
-                            print(visor);
+                            visor += (int.parse(n1) + int.parse(n2)).toString();
                             n1 = "";
                             n2 = "";
                             sum = 0;
