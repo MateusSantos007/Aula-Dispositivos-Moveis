@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,48 +21,63 @@ class _MyAppState extends State<MyApp> {
   bool dog = true;
   bool cat = false;
 
-  void mudarAnimal(){
+  void mudarAnimal() {
     setState(() {
       dog = !dog;
       cat = !cat;
-      calcularIdade(idade,peso);
+      calcularIdade(idade, peso);
     });
   }
 
-  Color setColor(bool escolhido){
+  Color setColor(bool escolhido) {
     return escolhido ? selecionado : fundo;
   }
 
   void calcularIdade(int idade, double peso) {
     setState(() {
-      if(idade == 1){
+      if (idade == 1) {
         resultado = 15;
       }
 
-      if(cat && idade != 1){
+      if (cat && idade != 1) {
         resultado = 24 + (4 * (idade - 2));
       }
-      
-      if(dog && idade != 1){
-        if(peso <= 9.07){
+
+      if (dog && idade != 1) {
+        if (peso <= 9.07) {
           resultado = 24 + (4 * (idade - 2));
         }
-        if(peso > 9.07 && peso <= 22.7){
+        if (peso > 9.07 && peso <= 22.7) {
           resultado = (24 + ((idade - 2) ~/ 2) * 9 + ((idade - 2) % 2) * 4);
-          if(idade > 6 && idade % 2 == 1){
+          if (idade > 6 && idade % 2 == 1) {
             resultado += 1;
           }
         }
-        if(peso > 22.7 && peso <= 40.8){
+        if (peso > 22.7 && peso <= 40.8) {
           resultado = 24 + 5 * (idade - 2);
-          if(idade == 9 || idade == 10 || idade == 14 || idade == 16 || idade == 19){
+          if (idade == 9 ||
+              idade == 10 ||
+              idade == 14 ||
+              idade == 16 ||
+              idade == 19) {
             resultado += 2;
-          }else{
-            if(idade != 2) resultado += 1;
+          } else {
+            if (idade != 2) resultado += 1;
           }
         }
-        if(peso > 40.8){
-          resultado = 24 + 7 * (idade - 2);
+        if (peso > 40.8) {
+          if (idade == 2) {
+            resultado = 24;
+          }
+          if (idade == 5 || idade == 4 || idade == 3) {
+            resultado = 32 + 5 * (idade - 3);
+          }
+          if (idade > 5 && idade < 8) {
+            resultado = 42 + 7 * (idade - 5);
+          }
+          if (idade >= 8) {
+            resultado = 56 + 8 * (idade - 7);
+          }
         }
       }
     });
@@ -204,7 +217,7 @@ class _MyAppState extends State<MyApp> {
                                     IconButton(
                                       onPressed: () {
                                         setState(() {
-                                          if(idade != 20) idade++;
+                                          if (idade != 20) idade++;
                                           calcularIdade(idade, peso);
                                         });
                                       },
@@ -217,7 +230,7 @@ class _MyAppState extends State<MyApp> {
                                     IconButton(
                                       onPressed: () {
                                         setState(() {
-                                          if(idade != 1) idade--;
+                                          if (idade != 1) idade--;
                                           calcularIdade(idade, peso);
                                         });
                                       },
