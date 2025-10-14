@@ -56,13 +56,15 @@ class _MyAppState extends State<MyApp> {
           }
         }
         if(peso > 22.7 && peso <= 40.8){
-          print(peso);
           resultado = 24 + 5 * (idade - 2);
           if(idade == 9 || idade == 10 || idade == 14 || idade == 16 || idade == 19){
             resultado += 2;
           }else{
             if(idade != 2) resultado += 1;
           }
+        }
+        if(peso > 40.8){
+          resultado = 24 + 7 * (idade - 2);
         }
       }
     });
