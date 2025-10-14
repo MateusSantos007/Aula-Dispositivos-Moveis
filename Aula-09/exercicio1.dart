@@ -6,8 +6,8 @@ void main() {
   runApp(const MyApp());
 }
 
-const double altura = 80.0;
 const Color fundo = Color(0xFF1E164B);
+const Color selecionado = Color.fromARGB(255, 45, 11, 237);
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -20,6 +20,19 @@ class _MyAppState extends State<MyApp> {
   double alturaPessoa = 1.50;
   int peso = 65;
   double resultado = 0.0;
+  bool masc = true;
+  bool fem = false;
+
+  void mudarGenero(){
+    setState(() {
+      masc = !masc;
+      fem = !fem;
+    });
+  }
+
+  Color setColor(bool escolhido){
+    return escolhido ? selecionado : fundo;
+  }
 
   void calcularIMC(int peso, double altura) {
     setState(() {
@@ -50,9 +63,9 @@ class _MyAppState extends State<MyApp> {
                   children: [
                     Expanded(
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: mudarGenero,
                         child: Caixa(
-                          cor: fundo,
+                          cor: setColor(masc),
                           filho: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -72,9 +85,9 @@ class _MyAppState extends State<MyApp> {
                     ),
                     Expanded(
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: mudarGenero,
                         child: Caixa(
-                          cor: fundo,
+                          cor: setColor(fem),
                           filho: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -218,12 +231,6 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ],
                 ),
-              ),
-              Container(
-                color: Color(0xFF638ED6),
-                width: double.infinity,
-                height: altura,
-                margin: EdgeInsets.only(top: 10.0),
               ),
             ],
           ),
